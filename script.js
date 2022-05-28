@@ -23,7 +23,7 @@ function mainfun(event){
         }
     }
     function nomovie(){
-        console.log("bhag bsdk");
+     
        let phot =  document.querySelector("#img");
        let img = document.createElement("img");
        img.src = "https://www.arweave.net/I4wkJKQHM53aw9ulOl_MKPmJJ5Ov2LAlxyuHaWe8nYU?ext=gif"
@@ -61,5 +61,52 @@ function mainfun(event){
            }
         });
     }
- 
-}
+
+     }
+    async function movieSearch(q){
+
+        let url = `http://www.omdbapi.com/?s=${q}&apikey=11a96cbd`;
+        let res = await fetch(url);
+        let data = await res.json();
+        return data.Search;
+    
+    }
+    function display(data){
+        if(data === undefined){
+            return false;
+        }
+        let displayName = document.getElementById("displayName");
+        displayName.innerHTML = null;
+        data.forEach(function(el) {
+              let div = document.createElement("div");
+        let img = document.createElement("img");
+        img.src = el.Poster;
+        let p = document.createElement("p");
+        p.innerText = el.Title;
+        div.append(img,p);
+        displayName.append(div);
+        });
+      
+    }
+    
+    
+    async function main(){
+        let query = document.getElementById("movie").value;
+        
+        
+        let res = movieSearch(query);
+        let data = await res;
+        console.log(data);
+        display(data)
+    
+    }
+    
+    let id;
+    function a(fun,delay){
+        if(id){
+            clearTimeout(id)
+        }
+        id = setTimeout(function() {
+            fun()
+        }, delay);
+    }

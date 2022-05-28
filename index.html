@@ -6,7 +6,31 @@
     <title>chill bro!</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    #displayName{
+       /*    display: flex;
+        flex-direction: row; */
+     
+        padding: 10px;
+        /* width: 400px;
+        height: 400px; */
+        overflow: scroll;
+        padding: 5px;
+    }
+    #displayName  div img {
+        margin-right: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 0%;
+        /* margin-top: 15px; */
 
+    }
+    #displayName div
+    {display: flex;
+        flex-direction: row;
+
+    }
+</style>
 <body> 
 
     <section id="header">
@@ -22,8 +46,8 @@
         </div>
     </section>
     <div id="search">
-        <input type="text" id="movie" placeholder="enter movie name">
-        <br>
+        <input type="text" id="movie" oninput="a(main,1000)" placeholder="enter movie name">
+       <div id="displayName"  ></div> <br>
         <button onclick="mainfun(event)">submit</button>
        
     </div><hr> 
@@ -39,7 +63,7 @@
 </body>
 
 <script src="script.js">
-
+    
 // let rat = document.getElementById("rating").innerText;
 // console.log(rat);
 </script>
